@@ -7,7 +7,7 @@ from utils_bot import *
 from Adarsh import StartTime
 
 
-START_TEXT = """ Your Telegram DC Is : `{}`  """
+STATUS_TEXT = """ Your Telegram DC Is : `{}`  """
 
 
 @StreamBot.on_message(filters.regex("maintainers😎"))
@@ -17,12 +17,12 @@ async def maintainers(b,m):
     except Exception:
                 await b.send_message(
                     chat_id=m.chat.id,
-                    text="I am Coded By [Adarsh Goel](https://github.com/adarsh-goel)",
+                    text="I am Coded By [Hatmateinc](https://t.me/Hatmateinc)",
                     
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton("Developer💻", url=f"https://github.com/adarsh-goel")
+                                InlineKeyboardButton("Developer", url=f"https://t.me/Epic_creation_bots")
                             ]
                         ]
                     ),
@@ -42,7 +42,7 @@ async def follow_user(b,m):
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton("FOLLOW ME", url=f"https://GITHUB.COM/adarsh-goel")
+                                InlineKeyboardButton("FOLLOW ME", url=f"https://GITHUB.COM")
                             ]
                         ]
                     ),
@@ -52,7 +52,7 @@ async def follow_user(b,m):
 
 @StreamBot.on_message(filters.regex("DC"))
 async def start(bot, update):
-    text = START_TEXT.format(update.from_user.dc_id)
+    text = STATUS_TEXT.format(update.from_user.dc_id)
     await update.reply_text(
         text=text,
         disable_web_page_preview=True,
