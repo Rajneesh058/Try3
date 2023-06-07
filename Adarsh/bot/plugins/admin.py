@@ -35,24 +35,28 @@ async def broadcast_(c, m):
         broadcast_id = ''.join([random.choice(string.ascii_letters) for i in range(3)])
         if not Broadcast_IDs.get(broadcast_id):
             break
+    start_time = time.time()
 
-━━━━❰ ʙʀᴏᴀᴅᴄᴀꜱᴛ sᴛᴀᴛᴜs ❱━━━━➣
-┣⪼𖨠 ᴛɪᴍᴇ_ᴛᴀᴋᴇɴ = time.time()
-┃
-┣⪼𖨠 ᴛᴏᴛᴀʟ_ᴜꜱᴇʀ = await db.total_users_count()
-┃
-┣⪼𖨠 ᴍᴇssᴀɢᴇs ꜱᴇɴᴛ = 0
-┃
-┣⪼𖨠 ᴍᴇssᴀɢᴇs ꜰᴀɪʟᴇᴅ = 0 
-┃
-┣⪼𖨠 ᴍᴇssᴀɢᴇs ꜱᴜᴄᴄᴇꜱꜱ = 0 
-━━━━━━━❰ ᴄᴏᴍᴘʟᴇᴛᴇᴅ ❱━━━━━━➣ ۪۪
+    total_users = await db.total_users_count()
+
+    done = 0
+
+    failed = 0
+
+    success = 0
+
     Broadcast_IDs[broadcast_id] = dict(
+
         total=total_users,
+
         current=done,
+
         failed=failed,
+
         success=success
+
     )
+
     
     async with aiofiles.open('broadcast.txt', 'w') as broadcast_log_file:
         async for user in all_users:
