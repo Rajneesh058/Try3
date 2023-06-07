@@ -28,7 +28,7 @@ async def start(b, m):
         await m.reply_photo(
             photo="https://graph.org/file/3db8ffa3bddc41e136ad0.jpg",
             caption=script.START_TEXT
-            reply_markup=InlineKeyboardMarkup(
+        reply_markup=InlineKeyboardMarkup(
                 [
                     [InlineKeyboardButton(" UPDATES", url="https://t.me/Movie_Megaverse_Backup"), InlineKeyboardButton("SUPPORT", url="https://t.me/Epic_creation_bots"),
                     [InlineKeyboardButton('Hᴇʟᴘ', callback_data='help')],
