@@ -30,9 +30,11 @@ async def start(b, m):
             caption=script.START_TEXT,
         reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton(" UPDATES", url="https://t.me/Movie_Megaverse_Backup"), InlineKeyboardButton("SUPPORT", url="https://t.me/Epic_creation_bots"),
-                    [InlineKeyboardButton('Hᴇʟᴘ', callback_data='help')],
-                    [InlineKeyboardButton('Aʙᴏᴜᴛ', callback_data='about')],
+                    [InlineKeyboardButton(" UPDATES", url="https://t.me/Movie_Megaverse_Backup"), 
+                     InlineKeyboardButton("SUPPORT", url="https://t.me/Epic_creation_bots")
+                     ],[
+                     InlineKeyboardButton('Hᴇʟᴘ', callback_data='help'),
+                     InlineKeyboardButton('Aʙᴏᴜᴛ', callback_data='about')]
                 ]
             ),
             
@@ -103,8 +105,10 @@ async def about_handler(bot, message):
         
         reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton("OWNER", url="https://t.me/Hatmateinc"), InlineKeyboardButton("DEVELOPER", url="https://t.me/Movie_F_bot")],
-                    [InlineKeyboardButton("BACK", url="start")]
+                    [InlineKeyboardButton("OWNER", url="https://t.me/Hatmateinc"), 
+                     InlineKeyboardButton("DEVELOPER", url="https://t.me/Movie_F_bot")
+                    ],[
+                     InlineKeyboardButton("BACK", url="start")]
                 ]
             ),
             
