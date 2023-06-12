@@ -12,7 +12,6 @@ from pyrogram.errors import UserNotParticipant
 from Adarsh.utils.file_properties import get_name, get_hash, get_media_file_size
 db = Database(Var.DATABASE_URL, Var.name)
 from pyrogram.types import ReplyKeyboardMarkup
-from script import START_TEXT, MSG_TEXT, HELP_TEXT, ABOUT_TEXT, JOIN_TEXT
 
                       
 @StreamBot.on_message(filters.command('start') & filters.private)
@@ -38,7 +37,7 @@ async def start(b, m):
             except UserNotParticipant:
                 await b.send_message(
                     chat_id=m.chat.id,
-                    text=script.JOIN_TEXT,
+                    text="""Pʟᴇᴀsᴇ Jᴏɪɴ Mʏ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ ᴛᴏ ᴜsᴇ ᴛʜɪs Bᴏᴛ!**\n\n__Dᴜᴇ ᴛᴏ Oᴠᴇʀʟᴏᴀᴅ, Oɴʟʏ Cʜᴀɴɴᴇʟ Sᴜʙsᴄʀɪʙᴇʀs ᴄᴀɴ ᴜsᴇ ᴛʜᴇ Bᴏᴛ!""",
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
@@ -60,7 +59,12 @@ async def start(b, m):
               
         await m.reply_photo(
             photo="https://graph.org/file/e276ceff64f464d4ef794.jpg",
-            caption=script.START_TEXT,
+            caption="""<i>👋 Hᴇʏ,</i>{}\n
+                        <i>I'ᴍ Tᴇʟᴇɢʀᴀᴍ Fɪʟᴇs Sᴛʀᴇᴀᴍɪɴɢ Bᴏᴛ ᴀs ᴡᴇʟʟ Dɪʀᴇᴄᴛ Lɪɴᴋs Gᴇɴᴇʀᴀᴛᴇ</i>\n
+                        <i>Cʟɪᴄᴋ ᴏɴ Hᴇʟᴘ ᴛᴏ ɢᴇᴛ ᴍᴏʀᴇ ɪɴғᴏʀᴍᴀᴛɪᴏɴ</i>\n
+                        <i><u>𝗪𝗔𝗥𝗡𝗜𝗡𝗚 🚸</u></i>
+                        <b>🔞 Pʀᴏɴ ᴄᴏɴᴛᴇɴᴛꜱ ʟᴇᴀᴅꜱ ᴛᴏ ᴘᴇʀᴍᴀɴᴇɴᴛ ʙᴀɴ ʏᴏᴜ.</b>\n\n
+                        <i><b>🍃 Bᴏᴛ Mᴀɪɴᴛᴀɪɴᴇᴅ Bʏ :</b>@Hatmateinc</i>""",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [InlineKeyboardButton("𝗕𝗢𝗧 𝗖𝗵𝗮𝗻𝗻𝗲𝗹", url="https://t.me/Epic_creation_bots"), InlineKeyboardButton("𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗚𝗿𝗼𝘂𝗽", url="https://t.me/movie_request_group_058")],
@@ -127,7 +131,20 @@ async def start(b, m):
                                      get_msg.id)
 
         
-        msg_text =script.MSG_TEXT,
+        msg_text ="""
+<b>╔════❰ ʏᴏᴜʀ ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ❱═❍⊱❁۪۪</b>
+║╭━━━━━━━━━━━━━━━➣
+║┣⪼𖨠 <b>📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> <i>{}</i>
+║┃
+║┣⪼𖨠 <b>📦 Fɪʟᴇ ꜱɪᴢᴇ :</b> <i>{}</i>
+║┃
+║┣⪼𖨠 <b>📥 Dᴏᴡɴʟᴏᴀᴅ :</b> <i>{}</i>
+║┃
+║┣⪼𖨠 <b>🚸 Nᴏᴛᴇ : Lɪɴᴋ ᴇxᴘɪʀᴇᴅ ɪꜱ ᴘᴇʀᴍᴀɴᴇɴᴛ</b>\
+║┃
+║┣⪼𖨠 <i>🍃 Bᴏᴛ Mᴀɪɴᴛᴀɪɴᴇᴅ Bʏ :</i> <b>@Epic_creation_bots</b>
+║╰━━━━━━━━━━━━━━━➣ 
+<b>╚══════════❰ ᴄᴏᴍᴘʟᴇᴛᴇᴅ ❱═════❍⊱❁۪۪</b>""",
         await m.reply_text(            
             text=msg_text.format(file_name, file_size, stream_link),
             
@@ -157,7 +174,7 @@ async def help_handler(bot, message):
         except UserNotParticipant:
             await bot.send_message(
                 chat_id=message.chat.id,
-                text=script.JOIN_TEXT,
+                text="**ᴊᴏɪɴ ᴍʏ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀɴɴᴇʟ ᴛᴏ ᴜsᴇ  ᴍᴇ..**\n\n**ᴅᴜᴇ ᴛᴏ ᴏᴠᴇʀʟᴏᴀᴅ ᴏɴʟʏ ᴄʜᴀɴɴᴇʟ sᴜʙsᴄʀɪʙᴇʀs ᴄᴀɴ ᴜsᴇ ᴍᴇ..!**",
                 reply_markup=InlineKeyboardMarkup(
                         [
                             [
@@ -178,8 +195,14 @@ async def help_handler(bot, message):
             return
     await message.reply_photo(
             photo="https://graph.org/file/e276ceff64f464d4ef794.jpg",
-            caption=script.HELP_TEXT, 
-  
+            caption="""
+<i>- Sᴇɴᴅ ᴍᴇ ᴀɴʏ ꜰɪʟᴇ (ᴏʀ) ᴍᴇᴅɪᴀ ꜰʀᴏᴍ ᴛᴇʟᴇɢʀᴀᴍ.</i>
+<i>- I ᴡɪʟʟ ᴘʀᴏᴠɪᴅᴇ ᴇxᴛᴇʀɴᴀʟ ᴅɪʀᴇᴄᴛ ᴅᴏᴡɴʟᴏᴀᴅ/Stream ʟɪɴᴋ !.</i>
+<i>- Aᴅᴅ Mᴇ ɪɴ ʏᴏᴜʀ Cʜᴀɴɴᴇʟ Fᴏʀ Dɪʀᴇᴄᴛ Dᴏᴡɴʟᴏᴀᴅ Lɪɴᴋs Bᴜᴛᴛᴏɴ</i>
+<i>- Tʜɪs Pᴇʀᴍᴇᴀɴᴛ Lɪɴᴋ Wɪᴛʜ Fᴀsᴛᴇsᴛ Sᴘᴇᴇᴅ</i>\n
+<u>🔸 𝗪𝗔𝗥𝗡𝗜𝗡𝗚 🚸</u>\n
+<b>🔞 Pʀᴏɴ ᴄᴏɴᴛᴇɴᴛꜱ ʟᴇᴀᴅꜱ ᴛᴏ ᴘᴇʀᴍᴀɴᴇɴᴛ ʙᴀɴ ʏᴏᴜ.</b>\n
+<i>Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ (ᴏʀ) ʀᴇᴘᴏʀᴛ ʙᴜɢꜱ</i> <b>: <a href='https://t.me/Hatmateinc'>[ ᴄʟɪᴄᴋ ʜᴇʀᴇ ]</a></b>""", 
         
         reply_markup=InlineKeyboardMarkup(
                 [
@@ -234,8 +257,18 @@ async def about_handler(bot, message):
             return
     await message.reply_photo(
             photo="https://graph.org/file/e276ceff64f464d4ef794.jpg",
-            caption=script.ABOUT_TEXT,
-  
+            caption="""<b>sᴏᴍᴇ ʜɪᴅᴅᴇɴ ᴅᴇᴛᴀɪʟs😜</b>
+
+<b>╭━━━━━━━━━━〔ғɪʟᴇ ᴛᴏ ʟɪɴᴋ ʙᴏᴛ〕</b>
+┃
+┣⪼<b>ʙᴏᴛ ɴᴀᴍᴇ : ғɪʟᴇ ᴛᴏ ʟɪɴᴋ
+┣⪼<b>ᴜᴘᴅᴀᴛᴇs : <a href='https://t.me/Movie_Megaverse_Backup'></a>Movie_Megaverse_Backup</b>
+┣⪼<b>sᴜᴘᴘᴏʀᴛ : <a href='https://t.me/Epic_creation_bots'>Epic_creation_bots</a></b>
+┣⪼<b>sᴇʀᴠᴇʀ : ʜᴇʀᴜᴋᴏ</b>
+┣⪼<b>ʟɪʙʀᴀʀʏ : ᴘʏʀᴏɢʀᴀᴍ</b>
+┣⪼<b>ʟᴀɴɢᴜᴀɢᴇ: ᴘʏᴛʜᴏɴ 3</b>
+┃
+<b>╰━━━━━━━━━━━〔ᴘʟᴇᴀsʀ sᴜᴘᴘᴏʀᴛ〕</b>""",
         
         reply_markup=InlineKeyboardMarkup(
                 [

@@ -10,8 +10,6 @@ from urllib.parse import quote_plus
 from pyrogram import filters, Client
 from pyrogram.errors import FloodWait, UserNotParticipant
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-from script import START_TEXT, MSG_TEXT, HELP_TEXT, ABOUT_TEXT, JOIN_TEXT
-
 from Adarsh.utils.file_properties import get_name, get_hash, get_media_file_size
 db = Database(Var.DATABASE_URL, Var.name)
 
@@ -45,7 +43,12 @@ async def private_receive_handler(c: Client, m: Message):
         except UserNotParticipant:
             await c.send_message(
                 chat_id=m.chat.id,
-                text=script.JOIN_TEXT,
+                text="""<i>👋 Hᴇʏ,</i>{}\n
+                        <i>I'ᴍ Tᴇʟᴇɢʀᴀᴍ Fɪʟᴇs Sᴛʀᴇᴀᴍɪɴɢ Bᴏᴛ ᴀs ᴡᴇʟʟ Dɪʀᴇᴄᴛ Lɪɴᴋs Gᴇɴᴇʀᴀᴛᴇ</i>\n
+                        <i>Cʟɪᴄᴋ ᴏɴ Hᴇʟᴘ ᴛᴏ ɢᴇᴛ ᴍᴏʀᴇ ɪɴғᴏʀᴍᴀᴛɪᴏɴ</i>\n
+                        <i><u>𝗪𝗔𝗥𝗡𝗜𝗡𝗚 🚸</u></i>
+                        <b>🔞 Pʀᴏɴ ᴄᴏɴᴛᴇɴᴛꜱ ʟᴇᴀᴅꜱ ᴛᴏ ᴘᴇʀᴍᴀɴᴇɴᴛ ʙᴀɴ ʏᴏᴜ.</b>\n\n
+                        <i><b>🍃 Bᴏᴛ Mᴀɪɴᴛᴀɪɴᴇᴅ Bʏ :</b>@Hatmateinc</i>""",
                     reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -71,7 +74,20 @@ async def private_receive_handler(c: Client, m: Message):
         stream_link = f"{Var.URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
         online_link = f"{Var.URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
        
-        msg_text =script.MSG_TEXT,
+        msg_text ="""
+<b>╔════❰ ʏᴏᴜʀ ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ❱═❍⊱❁۪۪</b>
+║╭━━━━━━━━━━━━━━━➣
+║┣⪼𖨠 <b>📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> <i>{}</i>
+║┃
+║┣⪼𖨠 <b>📦 Fɪʟᴇ ꜱɪᴢᴇ :</b> <i>{}</i>
+║┃
+║┣⪼𖨠 <b>📥 Dᴏᴡɴʟᴏᴀᴅ :</b> <i>{}</i>
+║┃
+║┣⪼𖨠 <b>🚸 Nᴏᴛᴇ : Lɪɴᴋ ᴇxᴘɪʀᴇᴅ ɪꜱ ᴘᴇʀᴍᴀɴᴇɴᴛ</b>\
+║┃
+║┣⪼𖨠 <i>🍃 Bᴏᴛ Mᴀɪɴᴛᴀɪɴᴇᴅ Bʏ :</i> <b>@Epic_creation_bots</b>
+║╰━━━━━━━━━━━━━━━➣ 
+<b>╚══════════❰ ᴄᴏᴍᴘʟᴇᴛᴇᴅ ❱═════❍⊱❁۪۪</b>""",
 
         await log_msg.reply_text(text=f"**RᴇQᴜᴇꜱᴛᴇᴅ ʙʏ :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n**Stream ʟɪɴᴋ :** {stream_link}", disable_web_page_preview=True,  quote=True)
         await m.reply_text(
