@@ -36,28 +36,16 @@ async def broadcast_(c, m):
         if not Broadcast_IDs.get(broadcast_id):
             break
     start_time = time.time()
-
     total_users = await db.total_users_count()
-
     done = 0
-
     failed = 0
-
     success = 0
-
     Broadcast_IDs[broadcast_id] = dict(
-
         total=total_users,
-
         current=done,
-
         failed=failed,
-
         success=success
-
     )
-
-    
     async with aiofiles.open('broadcast.txt', 'w') as broadcast_log_file:
         async for user in all_users:
             sts, msg = await send_msg(

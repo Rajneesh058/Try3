@@ -7,81 +7,27 @@ from utils_bot import *
 from Adarsh import StartTime
 
 
-STATUS_TEXT = """ Your Telegram DC Is : `{}`  """
+START_TEXT = """ Your Telegram DC Is : `{}`  """
 
-
-@StreamBot.on_message(filters.regex("maintainers😎"))
-async def maintainers(b,m):
-    try:
-       await b.send_message(chat_id=m.chat.id,text="HELLO",quote=True)
-    except Exception:
-                await b.send_message(
-                    chat_id=m.chat.id,
-                    text="I am Coded By [Hatmateinc](https://t.me/Hatmateinc)",
-                    
-                    reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton("Developer", url=f"https://t.me/Epic_creation_bots")
-                            ]
-                        ]
-                    ),
-                    
-                    disable_web_page_preview=True)
-            
-         
-@StreamBot.on_message(filters.regex("follow❤️"))
-async def follow_user(b,m):
-    try:
-       await b.send_message(chat_id=m.chat.id,text="HELLO",quote=True)
-    except Exception:
-                await b.send_message(
-                    chat_id=m.chat.id,
-                    text="<B>HERE'S THE FOLLOW LINK</B>",
-                    
-                    reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton("FOLLOW ME", url=f"https://GITHUB.COM")
-                            ]
-                        ]
-                    ),
-                    
-                    disable_web_page_preview=True)
-        
 
 @StreamBot.on_message(filters.regex("DC"))
 async def start(bot, update):
-    text = STATUS_TEXT.format(update.from_user.dc_id)
+    text = START_TEXT.format(update.from_user.dc_id)
     await update.reply_text(
         text=text,
         disable_web_page_preview=True,
         quote=True
     )
-
-    
-    
-@StreamBot.on_message(filters.command("list"))
-async def list(l, m):
-    LIST_MSG = "Hi! {} Here is a list of all my commands \n \n 1 . `start⚡️` \n 2. `help📚` \n 3. `login🔑` \n 4.`follow❤️` \n 5. `ping📡` \n 6. `status📊` \n 7. `DC` this tells your telegram dc \n 8. `maintainers😎` "
-    await l.send_message(chat_id = m.chat.id,
-        text = LIST_MSG.format(m.from_user.mention(style="md"))
-        
-    )
-    
-    
-@StreamBot.on_message(filters.regex("ping📡"))
+       
+@StreamBot.on_message(filters.regex("ping"))
 async def ping(b, m):
     start_t = time.time()
     ag = await m.reply_text("....")
     end_t = time.time()
     time_taken_s = (end_t - start_t) * 1000
     await ag.edit(f"Pong!\n{time_taken_s:.3f} ms")
-    
-    
-    
-    
-@StreamBot.on_message(filters.private & filters.regex("status📊"))
+     
+@StreamBot.on_message(filters.private & filters.regex("status"))
 async def stats(bot, update):
   currentTime = readable_time((time.time() - StartTime))
   total, used, free = shutil.disk_usage('.')
