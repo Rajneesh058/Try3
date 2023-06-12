@@ -54,7 +54,7 @@ async def private_receive_handler(c: Client, m: Message):
                         [
                             InlineKeyboardButton("ᴊᴏɪɴ ᴏᴜʀ ᴜᴩᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
                         ],[
-                            InlineKeyboardButton(" 🔄 Try Again", callback_data='start')]
+                            InlineKeyboardButton(" 🔄 Try Again", callback_data='start')
                         ]
                     ]
                 ),
