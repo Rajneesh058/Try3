@@ -43,7 +43,7 @@ async def start(b, m):
                             [
                                 InlineKeyboardButton("ᴊᴏɪɴ ᴏᴜʀ ᴜᴩᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
                      ],[
-                     InlineKeyboardButton("🔄 Refresh / Try Again", url=f"https://t.me/{(await b.get_me()).username}?start=AvishkarPatil_{usr_cmd}")
+                     InlineKeyboardButton(" 🔄 Try Again", url=f"https://t.me/{m.from_user.first_name}?start={message.command[1]}")
                      ]]
                     )
                 )
@@ -81,7 +81,7 @@ async def start(b, m):
                             [
                                 InlineKeyboardButton("ᴊᴏɪɴ ᴏᴜʀ ᴜᴩᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
                      ],[
-                     InlineKeyboardButton("🔄 Refresh / Try Again", url=f"https://t.me/{(await b.get_me()).username}?start=AvishkarPatil_{usr_cmd}")
+                     InlineKeyboardButton(" 🔄 Try Again", url=f"https://t.me/{m.from_user.first_name}?start={message.command[1]}")
                      ]]
                     )
                     
@@ -168,10 +168,11 @@ async def help_handler(bot, message):
                             [
                                 InlineKeyboardButton("ᴊᴏɪɴ ᴏᴜʀ ᴜᴩᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
                      ],[
-                     InlineKeyboardButton("🔄 Refresh / Try Again", url=f"https://t.me/{(await b.get_me()).username}?start=AvishkarPatil_{usr_cmd}")
+                     InlineKeyboardButton(" 🔄 Try Again", url=f"https://t.me/{m.from_user.first_name}?start={message.command[1]}")
+                    
                      ]]
                     )
-                    
+                  
                 )
             return
         except Exception:
@@ -216,8 +217,8 @@ async def about_handler(bot, message):
                             [
                                 InlineKeyboardButton("ᴊᴏɪɴ ᴏᴜʀ ᴜᴩᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
                      ],[
-                     InlineKeyboardButton("🔄 Refresh / Try Again", url=f"https://t.me/{(await b.get_me()).username}?start=AvishkarPatil_{usr_cmd}")
-                     ]]
+                     InlineKeyboardButton(" 🔄 Try Again", url=f"https://t.me/{m.from_user.first_name}?start={message.command[1]}")
+                    ]]
                     )
                     
                 )
@@ -296,7 +297,7 @@ def get_media_file_name(m):
     else:
         return None
 
-START_TEXT = f"""<i>👋 Hᴇʏ,</i>{}\n
+START_TEXT = f"""<i>👋 Hᴇʏ,</i>{m.from_user.id}\n
 <i>I'ᴍ Tᴇʟᴇɢʀᴀᴍ Fɪʟᴇs Sᴛʀᴇᴀᴍɪɴɢ Bᴏᴛ ᴀs ᴡᴇʟʟ Dɪʀᴇᴄᴛ Lɪɴᴋs Gᴇɴᴇʀᴀᴛᴇ</i>\n
  <i>Cʟɪᴄᴋ ᴏɴ Hᴇʟᴘ ᴛᴏ ɢᴇᴛ ᴍᴏʀᴇ ɪɴғᴏʀᴍᴀᴛɪᴏɴ</i>\n
 <i><u>𝗪𝗔𝗥𝗡𝗜𝗡𝗚 🚸</u></i>
