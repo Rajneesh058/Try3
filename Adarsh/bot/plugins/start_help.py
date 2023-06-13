@@ -185,7 +185,7 @@ async def help_handler(bot, message):
             photo="https://graph.org/file/e276ceff64f464d4ef794.jpg",
             caption=HELP_TEXT,
         
-        reply_markup=HELP
+        reply_markup=HELP_BUTTONS
         )
 
 @StreamBot.on_message(filters.command('about') & filters.private)
@@ -233,18 +233,9 @@ async def about_handler(bot, message):
             photo="https://graph.org/file/e276ceff64f464d4ef794.jpg",
             caption=ABOUT_TEXT,
         
-        reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton('ʙᴏᴛs ᴄʜᴀɴɴᴇʟ', url='https://t.me/epic_creation_bots'),
-                     InlineKeyboardButton('𝚂𝙾𝚄𝚁𝙲𝙴 𝙲𝙾𝙳𝙴', url = "https://t.me/Hatmateinc")
-                  ],[
-                     InlineKeyboardButton('🏠 𝙷𝙾𝙼𝙴 ', callback_data='start'),
-                     InlineKeyboardButton('🔐 𝙲𝙻𝙾𝚂𝙴 🔐', callback_data='close_data')
-                  ]]
-                  ),
-            
-                 )
+        reply_markup=ABOUT_BUTTONS
+      )
+    
 START_BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton('Hᴇʟᴘ', callback_data='help'),
