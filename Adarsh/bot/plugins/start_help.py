@@ -43,10 +43,9 @@ async def start(b, m):
                             [
                                 InlineKeyboardButton("ᴊᴏɪɴ ᴏᴜʀ ᴜᴩᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
                      ],[
-                     InlineKeyboardButton(" 🔄 Try Again", callback_data='start ')]
-                     ]
+                     InlineKeyboardButton("🔄 Refresh / Try Again", url=f"https://t.me/{(await b.get_me()).username}?start=Rajneesh_Singh_Tomar_{usr_cmd}")
+                    ]
                     )
-                    
                 )
                 return
             except Exception:
@@ -82,7 +81,7 @@ async def start(b, m):
                             [
                                 InlineKeyboardButton("ᴊᴏɪɴ ᴏᴜʀ ᴜᴩᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
                      ],[
-                     InlineKeyboardButton(" 🔄 Try Again", callback_data='start ')]
+                     InlineKeyboardButton("🔄 Refresh / Try Again", url=f"https://t.me/{(await b.get_me()).username}?start=Rajneesh_Singh_Tomar_{usr_cmd}")
                      ]
                     )
                     
@@ -121,8 +120,8 @@ async def start(b, m):
 
         
         msg_text ="""
-<b>╔════❰ ʏᴏᴜʀ ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ❱═❍⊱❁۪۪</b>
-║╭━━━━━━━━━━━━━━━➣
+<b>╔══❰ ʏᴏᴜʀ ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ❱═❍⊱❁۪۪</b>
+║╭━━━━━━━━━━━━➣
 ║┣⪼𖨠 <b>📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> <i>{}</i>
 ║┃
 ║┣⪼𖨠 <b>📦 Fɪʟᴇ ꜱɪᴢᴇ :</b> <i>{}</i>
@@ -132,8 +131,8 @@ async def start(b, m):
 ║┣⪼𖨠 <b>🚸 Nᴏᴛᴇ : Lɪɴᴋ ᴇxᴘɪʀᴇᴅ ɪꜱ ᴘᴇʀᴍᴀɴᴇɴᴛ</b>\
 ║┃
 ║┣⪼𖨠 <i>🍃 Bᴏᴛ Mᴀɪɴᴛᴀɪɴᴇᴅ Bʏ :</i> <b>@Epic_creation_bots</b>
-║╰━━━━━━━━━━━━━━━➣ 
-<b>╚══════════❰ ᴄᴏᴍᴘʟᴇᴛᴇᴅ ❱═════❍⊱❁۪۪</b>"""
+║╰━━━━━━━━━━━━➣ 
+<b>╚════❰ ᴄᴏᴍᴘʟᴇᴛᴇᴅ ❱══❍⊱❁۪۪</b>"""
         await m.reply_text(            
             text=msg_text.format(file_name, file_size, stream_link),
             
@@ -169,7 +168,7 @@ async def help_handler(bot, message):
                             [
                                 InlineKeyboardButton("ᴊᴏɪɴ ᴏᴜʀ ᴜᴩᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
                      ],[
-                     InlineKeyboardButton(" 🔄 Try Again", callback_data='start ')]
+                     InlineKeyboardButton("🔄 Refresh / Try Again", url=f"https://t.me/{(await b.get_me()).username}?start=Rajneesh_Singh_Tomar_{usr_cmd}")
                      ]
                     )
                     
@@ -217,7 +216,7 @@ async def about_handler(bot, message):
                             [
                                 InlineKeyboardButton("ᴊᴏɪɴ ᴏᴜʀ ᴜᴩᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
                      ],[
-                     InlineKeyboardButton(" 🔄 Try Again", callback_data='start ')]
+                     InlineKeyboardButton("🔄 Refresh / Try Again", url=f"https://t.me/{(await b.get_me()).username}?start=Rajneesh_Singh_Tomar_{usr_cmd}")
                      ]
                     )
                     
@@ -323,7 +322,7 @@ HELP_TEXT ="""
 <i>Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ (ᴏʀ) ʀᴇᴘᴏʀᴛ ʙᴜɢꜱ</i> <b>: <a href='https://t.me/Hatmateinc'>[ ᴄʟɪᴄᴋ ʜᴇʀᴇ ]</a></b>"""
 
 ABOUT_TEXT = """<b>sᴏᴍᴇ ʜɪᴅᴅᴇɴ ᴅᴇᴛᴀɪʟs😜</b>
-<b>╭━━━━━━━━━━〔ғɪʟᴇ ᴛᴏ ʟɪɴᴋ ʙᴏᴛ〕</b>
+<b>━━━━━━〔ғɪʟᴇ ᴛᴏ ʟɪɴᴋ ʙᴏᴛ〕</b>
 ┃
 ┣⪼<b>ʙᴏᴛ ɴᴀᴍᴇ : ғɪʟᴇ ᴛᴏ ʟɪɴᴋ
 ┣⪼<b>ᴜᴘᴅᴀᴛᴇs : <a href='https://t.me/Movie_Megaverse_Backup'></a>Movie_Megaverse_Backup</b>
@@ -332,4 +331,4 @@ ABOUT_TEXT = """<b>sᴏᴍᴇ ʜɪᴅᴅᴇɴ ᴅᴇᴛᴀɪʟs😜</b>
 ┣⪼<b>ʟɪʙʀᴀʀʏ : ᴘʏʀᴏɢʀᴀᴍ</b>
 ┣⪼<b>ʟᴀɴɢᴜᴀɢᴇ: ᴘʏᴛʜᴏɴ 3</b>
 ┃
-<b>╰━━━━━━━━━━━〔ᴘʟᴇᴀsʀ sᴜᴘᴘᴏʀᴛ〕</b>"""
+<b>━━━━━━〔ᴘʟᴇᴀsʀ sᴜᴘᴘᴏʀᴛ〕</b>"""
