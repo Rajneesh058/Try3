@@ -42,9 +42,8 @@ async def start(b, m):
                         [
                             [
                                 InlineKeyboardButton("ᴊᴏɪɴ ᴏᴜʀ ᴜᴩᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
-                     ],[
-                     InlineKeyboardButton(" 🔄 Try Again", url=f"https://t.me/{m.from_user.first_name}?start={message.command[1]}")
-                     ]]
+                            ]
+                        ]
                     )
                 )
                 return
@@ -80,9 +79,8 @@ async def start(b, m):
                         [
                             [
                                 InlineKeyboardButton("ᴊᴏɪɴ ᴏᴜʀ ᴜᴩᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
-                     ],[
-                     InlineKeyboardButton(" 🔄 Try Again", url=f"https://t.me/{m.from_user.first_name}?start={message.command[1]}")
-                     ]]
+                            ]   
+                        ]
                     )
                     
                 )
@@ -167,10 +165,8 @@ async def help_handler(bot, message):
                         [
                             [
                                 InlineKeyboardButton("ᴊᴏɪɴ ᴏᴜʀ ᴜᴩᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
-                     ],[
-                     InlineKeyboardButton(" 🔄 Try Again", url=f"https://t.me/{m.from_user.first_name}?start={message.command[1]}")
-                    
-                     ]]
+                            ]
+                        ]
                     )
                   
                 )
@@ -216,9 +212,8 @@ async def about_handler(bot, message):
                         [
                             [
                                 InlineKeyboardButton("ᴊᴏɪɴ ᴏᴜʀ ᴜᴩᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
-                     ],[
-                     InlineKeyboardButton(" 🔄 Try Again", url=f"https://t.me/{m.from_user.first_name}?start={message.command[1]}")
-                    ]]
+                            ]
+                        ]
                     )
                     
                 )
@@ -297,7 +292,7 @@ def get_media_file_name(m):
     else:
         return None
 
-START_TEXT = f"""<i>👋 Hᴇʏ,</i>{m.from_user.id}\n
+START_TEXT = f"""<i>👋 Hᴇʏ,</i>New User [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n
 <i>I'ᴍ Tᴇʟᴇɢʀᴀᴍ Fɪʟᴇs Sᴛʀᴇᴀᴍɪɴɢ Bᴏᴛ ᴀs ᴡᴇʟʟ Dɪʀᴇᴄᴛ Lɪɴᴋs Gᴇɴᴇʀᴀᴛᴇ</i>\n
  <i>Cʟɪᴄᴋ ᴏɴ Hᴇʟᴘ ᴛᴏ ɢᴇᴛ ᴍᴏʀᴇ ɪɴғᴏʀᴍᴀᴛɪᴏɴ</i>\n
 <i><u>𝗪𝗔𝗥𝗡𝗜𝗡𝗚 🚸</u></i>
@@ -313,7 +308,8 @@ HELP_TEXT ="""
 <b>🔞 Pʀᴏɴ ᴄᴏɴᴛᴇɴᴛꜱ ʟᴇᴀᴅꜱ ᴛᴏ ᴘᴇʀᴍᴀɴᴇɴᴛ ʙᴀɴ ʏᴏᴜ.</b>\n
 <i>Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ (ᴏʀ) ʀᴇᴘᴏʀᴛ ʙᴜɢꜱ</i> <b>: <a href='https://t.me/Hatmateinc'>[ ᴄʟɪᴄᴋ ʜᴇʀᴇ ]</a></b>"""
 
-ABOUT_TEXT = """<b>sᴏᴍᴇ ʜɪᴅᴅᴇɴ ᴅᴇᴛᴀɪʟs😜</b>
+ABOUT_TEXT = """
+<b>sᴏᴍᴇ ʜɪᴅᴅᴇɴ ᴅᴇᴛᴀɪʟs😜</b>
 
 <b>ʙᴏᴛ ɴᴀᴍᴇ : ғɪʟᴇ ᴛᴏ ʟɪɴᴋ
 
