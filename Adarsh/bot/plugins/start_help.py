@@ -322,13 +322,15 @@ HELP_TEXT ="""
 <i>Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ (ᴏʀ) ʀᴇᴘᴏʀᴛ ʙᴜɢꜱ</i> <b>: <a href='https://t.me/Hatmateinc'>[ ᴄʟɪᴄᴋ ʜᴇʀᴇ ]</a></b>"""
 
 ABOUT_TEXT = """<b>sᴏᴍᴇ ʜɪᴅᴅᴇɴ ᴅᴇᴛᴀɪʟs😜</b>
-<b>━━━━━━〔ғɪʟᴇ ᴛᴏ ʟɪɴᴋ ʙᴏᴛ〕</b>
-┃
-┣⪼<b>ʙᴏᴛ ɴᴀᴍᴇ : ғɪʟᴇ ᴛᴏ ʟɪɴᴋ
-┣⪼<b>ᴜᴘᴅᴀᴛᴇs : <a href='https://t.me/Movie_Megaverse_Backup'></a>Movie_Megaverse_Backup</b>
-┣⪼<b>sᴜᴘᴘᴏʀᴛ : <a href='https://t.me/Epic_creation_bots'>Epic_creation_bots</a></b>
-┣⪼<b>sᴇʀᴠᴇʀ : ʜᴇʀᴜᴋᴏ</b>
-┣⪼<b>ʟɪʙʀᴀʀʏ : ᴘʏʀᴏɢʀᴀᴍ</b>
-┣⪼<b>ʟᴀɴɢᴜᴀɢᴇ: ᴘʏᴛʜᴏɴ 3</b>
-┃
-<b>━━━━━━〔ᴘʟᴇᴀsʀ sᴜᴘᴘᴏʀᴛ〕</b>"""
+
+<b>ʙᴏᴛ ɴᴀᴍᴇ : ғɪʟᴇ ᴛᴏ ʟɪɴᴋ
+
+<b>ᴜᴘᴅᴀᴛᴇs : <a href='https://t.me/Movie_Megaverse_Backup'></a>Movie_Megaverse_Backup</b>
+
+<b>sᴜᴘᴘᴏʀᴛ : <a href='https://t.me/Epic_creation_bots'>Epic_creation_bots</a></b>
+
+<b>sᴇʀᴠᴇʀ : ʜᴇʀᴜᴋᴏ</b>
+
+<b>ʟɪʙʀᴀʀʏ : ᴘʏʀᴏɢʀᴀᴍ</b>
+
+<b>ʟᴀɴɢᴜᴀɢᴇ: ᴘʏᴛʜᴏɴ 3</b>"""
