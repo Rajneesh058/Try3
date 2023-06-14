@@ -300,7 +300,7 @@ HELP_TEXT ="""
 ABOUT_TEXT = """
 <b>sᴏᴍᴇ ʜɪᴅᴅᴇɴ ᴅᴇᴛᴀɪʟs😜</b>
 
-<b>ʙᴏᴛ ɴᴀᴍᴇ : ғɪʟᴇ ᴛᴏ ʟɪɴᴋ
+<b>ʙᴏᴛ ɴᴀᴍᴇ : ғɪʟᴇ ᴛᴏ ʟɪɴᴋ </b>
 
 <b>ᴜᴘᴅᴀᴛᴇs : <a href='https://t.me/Movie_Megaverse_Backup'></a>Movie_Megaverse_Backup</b>
 
