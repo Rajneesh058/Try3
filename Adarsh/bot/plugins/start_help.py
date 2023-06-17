@@ -42,9 +42,11 @@ async def start(b, m):
                         [
                             [
                                 InlineKeyboardButton("ᴊᴏɪɴ ᴏᴜʀ ᴜᴩᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
-                            ]
-                        ]
+                     ],[
+                     InlineKeyboardButton(" 🔄 Try Again", callback_data='start ')]
+                     ]
                     )
+                    
                 )
                 return
             except Exception:
@@ -79,8 +81,9 @@ async def start(b, m):
                         [
                             [
                                 InlineKeyboardButton("ᴊᴏɪɴ ᴏᴜʀ ᴜᴩᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
-                            ]   
-                        ]
+                     ],[
+                     InlineKeyboardButton(" 🔄 Try Again", callback_data='start ')]
+                     ]
                     )
                     
                 )
@@ -118,29 +121,33 @@ async def start(b, m):
 
         
         msg_text ="""
-<b>╔══❰ ʏᴏᴜʀ ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ❱═❍⊱❁۪۪</b>
-║╭━━━━━━━━━━━━➣
-║┣⪼𖨠 <b>📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> 
-║┃  <i>{}</i>
+<b>╔═══❰ ʏᴏᴜʀ ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ❱═❍⊱❁۪۪</b>
+║╭━━━━━━━━━━━━━━━➣
+║┣⪼𖨠 <b>📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> <i>{}</i>
 ║┃
-║┣⪼𖨠 <b>📦 Fɪʟᴇ ꜱɪᴢᴇ :</b>
-║┃          <i>{}</i>
+║┣⪼𖨠 <b>📦 Fɪʟᴇ ꜱɪᴢᴇ :</b> <i>{}</i>
 ║┃
-║┣⪼𖨠 <b>📥 Dᴏᴡɴʟᴏᴀᴅ :</b> 
-║┃  <i>{}</i>
+║┣⪼𖨠 <b>📥 Dᴏᴡɴʟᴏᴀᴅ :</b> <i>{}</i>
 ║┃
-║┣⪼𖨠 <b>🚸 Nᴏᴛᴇ : Lɪɴᴋ ᴇxᴘɪʀᴇᴅ ɪꜱ
-║┃                  ᴘᴇʀᴍᴀɴᴇɴᴛ</b>
+║┣⪼𖨠 <b>🚸 Nᴏᴛᴇ : Lɪɴᴋ ᴇxᴘɪʀᴇᴅ ɪꜱ ᴘᴇʀᴍᴀɴᴇɴᴛ</b>\
 ║┃
-║┣⪼𖨠 <i>🍃 Bᴏᴛ Mᴀɪɴᴛᴀɪɴᴇᴅ Bʏ :</i>
-║┃    <b>@Epic_creation_bots</b>
-║╰━━━━━━━━━━━━➣ 
-<b>╚════❰ ᴄᴏᴍᴘʟᴇᴛᴇᴅ ❱══❍⊱❁۪۪</b>"""
+║┣⪼𖨠 <i>🍃 Bᴏᴛ Mᴀɪɴᴛᴀɪɴᴇᴅ Bʏ :</i> <b>@Epic_creation_bots</b>
+║╰━━━━━━━━━━━━━━━➣ 
+<b>╚═══❰ ᴄᴏᴍᴘʟᴇᴛᴇᴅ ❱═❍⊱❁۪۪</b>"""
         await m.reply_text(            
             text=msg_text.format(file_name, file_size, stream_link),
             
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⚡ ᴅᴏᴡɴʟᴏᴀᴅ ɴᴏᴡ ⚡", url=stream_link)]])
         )
+
+
+@StreamBot.on_message(filters.private & filters.command(["about"]))
+async def start(bot, update):
+    await update.reply_text(
+        text=ABOUT_TEXT.format(update.from_user.mention),
+        disable_web_page_preview=True,
+        reply_markup=ABOUT_BUTTONS
+    )
 
 
 @StreamBot.on_message(filters.command('help') & filters.private)
@@ -149,94 +156,45 @@ async def help_handler(bot, message):
         await db.add_user(message.from_user.id)
         await bot.send_message(
             Var.BIN_CHANNEL,
-            f"#NEW_USER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) Started !!"
+            f"**Nᴇᴡ Usᴇʀ Jᴏɪɴᴇᴅ **\n\n__Mʏ Nᴇᴡ Fʀɪᴇɴᴅ__ [{message.from_user.first_name}](tg://user?id={message.from_user.id}) __Started Your Bot !!__"
         )
     if Var.UPDATES_CHANNEL is not None:
         try:
             user = await bot.get_chat_member(Var.UPDATES_CHANNEL, message.chat.id)
-            if user.status == "banned":
+            if user.status == "kicked":
                 await bot.send_message(
                     chat_id=message.chat.id,
-                    text="**ʏᴏᴜ ᴀʀᴇ ʙᴀɴɴᴇᴅ../**",
-                    
+                    text="<i>Sᴏʀʀʏ Sɪʀ, Yᴏᴜ ᴀʀᴇ Bᴀɴɴᴇᴅ ᴛᴏ ᴜsᴇ ᴍᴇ. Cᴏɴᴛᴀᴄᴛ ᴛʜᴇ Dᴇᴠᴇʟᴏᴘᴇʀ</i>",
+                    parse_mode=ParseMode.HTML,
                     disable_web_page_preview=True
                 )
                 return
         except UserNotParticipant:
             await bot.send_message(
                 chat_id=message.chat.id,
-                text="**ᴊᴏɪɴ ᴍʏ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀɴɴᴇʟ ᴛᴏ ᴜsᴇ  ᴍᴇ..**\n\n**ᴅᴜᴇ ᴛᴏ ᴏᴠᴇʀʟᴏᴀᴅ ᴏɴʟʏ ᴄʜᴀɴɴᴇʟ sᴜʙsᴄʀɪʙᴇʀs ᴄᴀɴ ᴜsᴇ ᴍᴇ..!**",
+                text="**Pʟᴇᴀsᴇ Jᴏɪɴ Mʏ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ ᴛᴏ ᴜsᴇ ᴛʜɪs Bᴏᴛ!**\n\n__Dᴜᴇ ᴛᴏ Oᴠᴇʀʟᴏᴀᴅ, Oɴʟʏ Cʜᴀɴɴᴇʟ Sᴜʙsᴄʀɪʙᴇʀs ᴄᴀɴ ᴜsᴇ ᴛʜᴇ Bᴏᴛ!__",
                 reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton("ᴊᴏɪɴ ᴏᴜʀ ᴜᴩᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
-                            ]
-                        ]
-                    )
-                  
-                )
+                    [[
+                        InlineKeyboardButton("🤖 Jᴏɪɴ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
+                        ]]
+                ),
+                parse_mode=ParseMode.MARKDOWN
+            )
             return
         except Exception:
             await bot.send_message(
                 chat_id=message.chat.id,
-                text="**𝙰𝙳𝙳 𝙵𝙾𝚁𝙲𝙴 𝚂𝚄𝙱 𝚃𝙾 𝙰𝙽𝚈 𝙲𝙷𝙰𝙽𝙽𝙴𝙻**",
-                
+                text="__Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ Wʀᴏɴɢ. Cᴏɴᴛᴀᴄᴛ ᴍᴇ__ [Aᴠɪsʜᴋᴀʀ Pᴀᴛɪʟ](https://t.me/Avishkarpatil).",
+                parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True)
             return
-    await message.reply_photo(
-            photo="https://graph.org/file/e276ceff64f464d4ef794.jpg",
-            caption=HELP_TEXT,
-        
+    await message.reply_text(
+        text=HELP_TEXT,
+        parse_mode=ParseMode.HTML,
+        disable_web_page_preview=True,
         reply_markup=HELP_BUTTONS
         )
-
-@StreamBot.on_message(filters.command('about') & filters.private)
-async def about_handler(bot, message):
-    if not await db.is_user_exist(message.from_user.id):
-        await db.add_user(message.from_user.id)
-        await bot.send_message(
-            Var.BIN_CHANNEL,
-            f"#NEW_USER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) Started !!"
-        )
-    if Var.UPDATES_CHANNEL is not None:
-        try:
-            user = await bot.get_chat_member(Var.UPDATES_CHANNEL, message.chat.id)
-            if user.status == "banned":
-                await bot.send_message(
-                    chat_id=message.chat.id,
-                    text="**ʏᴏᴜ ᴀʀᴇ ʙᴀɴɴᴇᴅ../**",
-                    
-                    disable_web_page_preview=True
-                )
-                return
-        except UserNotParticipant:
-            await bot.send_message(
-                chat_id=message.chat.id,
-                text="**ᴊᴏɪɴ ᴍʏ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀɴɴᴇʟ ᴛᴏ ᴜsᴇ  ᴍᴇ..**\n\n**ᴅᴜᴇ ᴛᴏ ᴏᴠᴇʀʟᴏᴀᴅ ᴏɴʟʏ ᴄʜᴀɴɴᴇʟ sᴜʙsᴄʀɪʙᴇʀs ᴄᴀɴ ᴜsᴇ ᴍᴇ..!**",
-                reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton("ᴊᴏɪɴ ᴏᴜʀ ᴜᴩᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
-                            ]
-                        ]
-                    )
-                    
-                )
-            return
-        except Exception:
-            await bot.send_message(
-                chat_id=message.chat.id,
-                text="**𝙰𝙳𝙳 𝙵𝙾𝚁𝙲𝙴 𝚂𝚄𝙱 𝚃𝙾 𝙰𝙽𝚈 𝙲𝙷𝙰𝙽𝙽𝙴𝙻**",
-                
-                disable_web_page_preview=True)
-            return
-    await message.reply_photo(
-            photo="https://graph.org/file/e276ceff64f464d4ef794.jpg",
-            caption=ABOUT_TEXT,
         
-        reply_markup=ABOUT_BUTTONS
-      )
-    
 START_BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton('Hᴇʟᴘ', callback_data='help'),
@@ -279,9 +237,25 @@ async def cb_data(bot, update):
             disable_web_page_preview=True,
             reply_markup=ABOUT_BUTTONS
         )
- 
+    else:
+        await update.message.delete()
 
-START_TEXT = """<i>👋 Hey </i>,{}\n
+def get_media_file_size(m):
+    media = m.video or m.audio or m.document
+    if media and media.file_size:
+        return media.file_size
+    else:
+        return None
+
+
+def get_media_file_name(m):
+    media = m.video or m.document or m.audio
+    if media and media.file_name:
+        return urllib.parse.quote_plus(media.file_name)
+    else:
+        return None
+
+START_TEXT = """<i>👋 Hᴇʏ,</i>{}\n
 <i>I'ᴍ Tᴇʟᴇɢʀᴀᴍ Fɪʟᴇs Sᴛʀᴇᴀᴍɪɴɢ Bᴏᴛ ᴀs ᴡᴇʟʟ Dɪʀᴇᴄᴛ Lɪɴᴋs Gᴇɴᴇʀᴀᴛᴇ</i>\n
  <i>Cʟɪᴄᴋ ᴏɴ Hᴇʟᴘ ᴛᴏ ɢᴇᴛ ᴍᴏʀᴇ ɪɴғᴏʀᴍᴀᴛɪᴏɴ</i>\n
 <i><u>𝗪𝗔𝗥𝗡𝗜𝗡𝗚 🚸</u></i>
@@ -299,15 +273,9 @@ HELP_TEXT ="""
 
 ABOUT_TEXT = """
 <b>sᴏᴍᴇ ʜɪᴅᴅᴇɴ ᴅᴇᴛᴀɪʟs😜</b>
-
 <b>ʙᴏᴛ ɴᴀᴍᴇ : ғɪʟᴇ ᴛᴏ ʟɪɴᴋ </b>
-
 <b>ᴜᴘᴅᴀᴛᴇs : <a href='https://t.me/Movie_Megaverse_Backup'></a>Movie_Megaverse_Backup</b>
-
 <b>sᴜᴘᴘᴏʀᴛ : <a href='https://t.me/Epic_creation_bots'>Epic_creation_bots</a></b>
-
 <b>sᴇʀᴠᴇʀ : ʜᴇʀᴜᴋᴏ</b>
-
 <b>ʟɪʙʀᴀʀʏ : ᴘʏʀᴏɢʀᴀᴍ</b>
-
 <b>ʟᴀɴɢᴜᴀɢᴇ: ᴘʏᴛʜᴏɴ 3</b>"""
