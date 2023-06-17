@@ -146,35 +146,36 @@ async def start(b, m):
             reply_markup=START_BUTTONS
               )
     else:
-        if Var.UPDATES_CHANNEL is not None:
+        if Var.UPDATES_CHANNEL != "None":
             try:
                 user = await b.get_chat_member(Var.UPDATES_CHANNEL, m.chat.id)
-                if user.status == "banned":
+                if user.status == "kicked":
                     await b.send_message(
                         chat_id=m.chat.id,
-                        text="**ʏᴏᴜ ᴀʀᴇ ʙᴀɴɴᴇᴅ../**",
+                        text="**Sᴏʀʀʏ Sɪʀ, Yᴏᴜ ᴀʀᴇ Bᴀɴɴᴇᴅ ᴛᴏ ᴜsᴇ ᴍᴇ. Qᴜɪᴄᴋʟʏ ᴄᴏɴᴛᴀᴄᴛ** @Rajneesh_Singh_Tomar",
+                        parse_mode=ParseMode.MARKDOWN,
                         disable_web_page_preview=True
                     )
                     return
             except UserNotParticipant:
                 await b.send_message(
                     chat_id=m.chat.id,
-                    text="**ᴊᴏɪɴ ᴍʏ ᴜᴘᴅᴀᴛᴇs ᴄʜᴀɴɴᴇʟ ᴛᴏ ᴜsᴇ  ᴍᴇ..**\n\n**ᴅᴜᴇ ᴛᴏ ᴏᴠᴇʀʟᴏᴀᴅ ᴏɴʟʏ ᴄʜᴀɴɴᴇʟ sᴜʙsᴄʀɪʙᴇʀs ᴄᴀɴ ᴜsᴇ ᴍᴇ..!**",
-                     reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton("ᴊᴏɪɴ ᴏᴜʀ ᴜᴩᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
-                     ]
-                     ]
-                    )
-                    
+                    text="**Pʟᴇᴀsᴇ Jᴏɪɴ Mʏ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ ᴛᴏ ᴜsᴇ ᴛʜɪs Bᴏᴛ**!\n\n**Dᴜᴇ ᴛᴏ Oᴠᴇʀʟᴏᴀᴅ, Oɴʟʏ Cʜᴀɴɴᴇʟ Sᴜʙsᴄʀɪʙᴇʀs ᴄᴀɴ ᴜsᴇ ᴛʜᴇ Bᴏᴛ**!",
+                    reply_markup=InlineKeyboardMarkup(
+                        [[
+                          InlineKeyboardButton("🤖 Jᴏɪɴ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")],
+                         [InlineKeyboardButton("🔄 Refresh / Try Again", url=f"https://t.me/{(await b.get_me()).username}?start=Moksh_b658_{usr_cmd}")
+                        
+                        ]]
+                    ),
+                    parse_mode=ParseMode.MARKDOWN
                 )
                 return
             except Exception:
                 await b.send_message(
                     chat_id=m.chat.id,
-                    text="**𝙰𝙳𝙳 𝙵𝙾𝚁𝙲𝙴 𝚂𝚄𝙱 𝚃𝙾 𝙰𝙽𝚈 𝙲𝙷𝙰𝙽𝙽𝙴𝙻**",
-                    
+                    text="**Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ Wʀᴏɴɢ. Cᴏɴᴛᴀᴄᴛ ᴍᴇ** [Rajneesh Singh Tomar](https://t.me/Rajneesh_Singh_Tomar).",
+                    parse_mode=ParseMode.MARKDOWN,
                     disable_web_page_preview=True)
                 return
 
@@ -195,31 +196,26 @@ async def start(b, m):
             file_name = f"{get_msg.document.file_name}"
         elif get_msg.audio:
             file_name = f"{get_msg.audio.file_name}"
-
-        stream_link = "https://{}/{}".format(Var.FQDN, get_msg.id) if Var.ON_HEROKU or Var.NO_PORT else \
-            "http://{}:{}/{}".format(Var.FQDN,
-                                     Var.PORT,
-                                     get_msg.id)
-
-        
-        msg_text ="""
-<b>╔═══❰ ʏᴏᴜʀ ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ❱═❍⊱❁۪۪</b>
-║╭━━━━━━━━━━━━━━━➣
-║┣⪼𖨠 <b>📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> <i>{}</i>
-║┃
-║┣⪼𖨠 <b>📦 Fɪʟᴇ ꜱɪᴢᴇ :</b> <i>{}</i>
-║┃
-║┣⪼𖨠 <b>📥 Dᴏᴡɴʟᴏᴀᴅ :</b> <i>{}</i>
-║┃
-║┣⪼𖨠 <b>🚸 Nᴏᴛᴇ : Lɪɴᴋ ᴇxᴘɪʀᴇᴅ ɪꜱ ᴘᴇʀᴍᴀɴᴇɴᴛ</b>\
-║┃
-║┣⪼𖨠 <i>🍃 Bᴏᴛ Mᴀɪɴᴛᴀɪɴᴇᴅ Bʏ :</i> <b>@Epic_creation_bots</b>
-║╰━━━━━━━━━━━━━━━➣ 
-<b>╚═══❰ ᴄᴏᴍᴘʟᴇᴛᴇᴅ ❱═❍⊱❁۪۪</b>"""
-        await m.reply_text(            
-            text=msg_text.format(file_name, file_size, stream_link),
             
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⚡ ᴅᴏᴡɴʟᴏᴀᴅ ɴᴏᴡ ⚡", url=stream_link)]])
+        stream_link = "https://{}/{}/{}".format(Var.FQDN, get_msg.message_id, file_name) if Var.ON_HEROKU or Var.NO_PORT else \
+            "http://{}:{}/{}/{}".format(Var.FQDN,
+                                     Var.PORT,
+                                     get_msg.message_id,
+                                     file_name)
+
+        msg_text ="""
+<i><u>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</u></i>\n
+<b>📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> <i>{}</i>\n
+<b>📦 Fɪʟᴇ ꜱɪᴢᴇ :</b> <i>{}</i>\n
+<b>📥 Dᴏᴡɴʟᴏᴀᴅ :</b> <i>{}</i>\n
+<b>🚸 Nᴏᴛᴇ : Lɪɴᴋ ᴇxᴘɪʀᴇᴅ ɪɴ 24 ʜᴏᴜʀꜱ</b>\n
+<i>🍃 Bᴏᴛ Mᴀɪɴᴛᴀɪɴᴇᴅ Bʏ :</i> <b>@Epic_creation_bots</b>
+"""
+
+        await m.reply_text(
+            text=msg_text.format(file_name, file_size, stream_link),
+            parse_mode=ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Dᴏᴡɴʟᴏᴀᴅ ɴᴏᴡ 📥", url=stream_link)]])
         )
 
 
