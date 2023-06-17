@@ -129,7 +129,7 @@ async def start(b, m):
                             InlineKeyboardButton("Jᴏɪɴ ɴᴏᴡ 🔓", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
                             ]]
                     ),
-                    parse_mode=ParseMode.HTML
+                    parse_mode=ParseMode.MARKDOWN
                 )
                 return
             except Exception:
