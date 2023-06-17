@@ -12,6 +12,7 @@ from pyrogram.errors import UserNotParticipant
 from Adarsh.utils.file_properties import get_name, get_hash, get_media_file_size
 db = Database(Var.DATABASE_URL, Var.name)
 from pyrogram.types import ReplyKeyboardMarkup
+from pyrogram.enums.parse_mode import ParseMode
 
 START_BUTTONS = InlineKeyboardMarkup(
         [[
@@ -129,7 +130,7 @@ async def start(b, m):
                             InlineKeyboardButton("Jᴏɪɴ ɴᴏᴡ 🔓", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
                             ]]
                     ),
-                    parse_mode=ParseMode.MARKDOWN
+                    parse_mode=ParseMode.HTML
                 )
                 return
             except Exception:
