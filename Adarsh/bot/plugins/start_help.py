@@ -17,14 +17,14 @@ from pyrogram.enums.parse_mode import ParseMode
 START_BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton('Hᴇʟᴘ', callback_data='help'),
-        InlineKeyboardButton('Aʙᴏᴜᴛ', callback_data='about'),
+        InlineKeyboardButton('Aʙᴏᴜᴛ', callback_data='abouts'),
         InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close')
         ]]
     )
 HELP_BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton('Hᴏᴍᴇ', callback_data='home'),
-        InlineKeyboardButton('Aʙᴏᴜᴛ', callback_data='about'),
+        InlineKeyboardButton('Aʙᴏᴜᴛ', callback_data='abouts'),
         InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close')
         ]]
     )
@@ -50,7 +50,7 @@ async def cb_data(bot, update):
             disable_web_page_preview=True,
             reply_markup=HELP_BUTTONS
         )
-    elif update.data == "about":
+    elif update.data == "abouts":
         await update.message.edit_text(
             text=ABOUT_TEXT,
             disable_web_page_preview=True,
@@ -220,7 +220,7 @@ async def start(b, m):
         )
 
 
-@StreamBot.on_message(filters.private & filters.command(["about"]))
+@StreamBot.on_message(filters.private & filters.command(["abouts"]))
 async def start(bot, update):
     await update.reply_text(
         text=ABOUT_TEXT.format(update.from_user.mention),
