@@ -12,19 +12,18 @@ from pyrogram.errors import UserNotParticipant
 from Adarsh.utils.file_properties import get_name, get_hash, get_media_file_size
 db = Database(Var.DATABASE_URL, Var.name)
 from pyrogram.types import ReplyKeyboardMarkup
-from pyrogram.enums.parse_mode import ParseMode
 
 START_BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton('Hᴇʟᴘ', callback_data='help'),
-        InlineKeyboardButton('Aʙᴏᴜᴛ', callback_data='abouts'),
+        InlineKeyboardButton('Aʙᴏᴜᴛ', callback_data='about'),
         InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close')
         ]]
     )
 HELP_BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton('Hᴏᴍᴇ', callback_data='home'),
-        InlineKeyboardButton('Aʙᴏᴜᴛ', callback_data='abouts'),
+        InlineKeyboardButton('Aʙᴏᴜᴛ', callback_data='about'),
         InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close')
         ]]
     )
@@ -50,12 +49,12 @@ async def cb_data(bot, update):
             disable_web_page_preview=True,
             reply_markup=HELP_BUTTONS
         )
-    elif update.data == "abouts":
-        await update.message.edit_text(
+    elif query.data == "about":
+        await query.message.edit_text(
             text=ABOUT_TEXT,
             disable_web_page_preview=True,
-            reply_markup=ABOUT_BUTTONS
-        )
+            reply_markup=ABOUT_BUTTONS,
+            parse_mode=enums.ParseMode.HTML
     else:
         await update.message.delete()
 
@@ -73,7 +72,6 @@ def get_media_file_name(m):
         return urllib.parse.quote_plus(media.file_name)
     else:
         return None
-        
 
 START_TEXT = """<i>👋 Hᴇʏ,</i>{}\n
 <i>I'ᴍ Tᴇʟᴇɢʀᴀᴍ Fɪʟᴇs Sᴛʀᴇᴀᴍɪɴɢ Bᴏᴛ ᴀs ᴡᴇʟʟ Dɪʀᴇᴄᴛ Lɪɴᴋs Gᴇɴᴇʀᴀᴛᴇ</i>\n
@@ -220,7 +218,7 @@ async def start(b, m):
         )
 
 
-@StreamBot.on_message(filters.private & filters.command(["abouts"]))
+@StreamBot.on_message(filters.private & filters.command(["about"]))
 async def start(bot, update):
     await update.reply_text(
         text=ABOUT_TEXT.format(update.from_user.mention),
