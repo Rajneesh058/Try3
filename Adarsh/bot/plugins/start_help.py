@@ -115,6 +115,7 @@ async def start(b, m):
                 user = await b.get_chat_member(Var.UPDATES_CHANNEL, m.chat.id)
                 if user.status == "kicked":
                     await b.send_message(
+                        photo="https://graph.org/file/8e67ae4a3803f69a28218.jpg",
                         chat_id=m.chat.id,
                         text="__Sᴏʀʀʏ Sɪʀ, Yᴏᴜ ᴀʀᴇ Bᴀɴɴᴇᴅ ᴛᴏ ᴜsᴇ ᴍᴇ. Cᴏɴᴛᴀᴄᴛ ᴛʜᴇ Dᴇᴠᴇʟᴏᴘᴇʀ__\n\n @AvishkarPatil **Tʜᴇʏ Wɪʟʟ Hᴇʟᴘ Yᴏᴜ**",
                         parse_mode=ParseMode.MARKDOWN,
@@ -135,6 +136,7 @@ async def start(b, m):
                 return
             except Exception:
                 await b.send_message(
+                    photo="https://graph.org/file/8e67ae4a3803f69a28218.jpg",
                     chat_id=m.chat.id,
                     text="**Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ Wʀᴏɴɢ. Cᴏɴᴛᴀᴄᴛ ᴍʏ ʙᴏss**  [HATMATES](https://t.me/Hatmateinc)",
                     parse_mode=ParseMode.HTML,
@@ -152,6 +154,7 @@ async def start(b, m):
                 user = await b.get_chat_member(Var.UPDATES_CHANNEL, m.chat.id)
                 if user.status == "kicked":
                     await b.send_message(
+                        photo="https://graph.org/file/8e67ae4a3803f69a28218.jpg",
                         chat_id=m.chat.id,
                         text="**Sᴏʀʀʏ Sɪʀ, Yᴏᴜ ᴀʀᴇ Bᴀɴɴᴇᴅ ᴛᴏ ᴜsᴇ ᴍᴇ. Qᴜɪᴄᴋʟʏ ᴄᴏɴᴛᴀᴄᴛ** @Rajneesh_Singh_Tomar",
                         parse_mode=ParseMode.MARKDOWN,
@@ -165,7 +168,7 @@ async def start(b, m):
                     reply_markup=InlineKeyboardMarkup(
                         [[
                           InlineKeyboardButton("🤖 Jᴏɪɴ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")],
-                         [InlineKeyboardButton("🔄 Refresh / Try Again", url=f"https://t.me/{(await b.get_me()).username}?start=Moksh_b658_{usr_cmd}")
+                         [InlineKeyboardButton("🔄 Refresh / Try Again", url=f"https://t.me/{(await b.get_me()).username}?start={message_cmd}")
                         
                         ]]
                     ),
@@ -220,16 +223,7 @@ async def start(b, m):
         )
 
 
-@StreamBot.on_message(filters.private & filters.command(["about"]))
-async def start(bot, update):
-    await update.reply_text(
-        text=ABOUT_TEXT.format(update.from_user.mention),
-        disable_web_page_preview=True,
-        reply_markup=ABOUT_BUTTONS
-    )
-
-
-@StreamBot.on_message(filters.command('help') & filters.private)
+@StreamBot.on_message(filters.command('about') & filters.private)
 async def help_handler(bot, message):
     if not await db.is_user_exist(message.from_user.id):
         await db.add_user(message.from_user.id)
@@ -242,6 +236,7 @@ async def help_handler(bot, message):
             user = await bot.get_chat_member(Var.UPDATES_CHANNEL, message.chat.id)
             if user.status == "kicked":
                 await bot.send_message(
+                    photo="https://graph.org/file/8e67ae4a3803f69a28218.jpg",
                     chat_id=message.chat.id,
                     text="<i>Sᴏʀʀʏ Sɪʀ, Yᴏᴜ ᴀʀᴇ Bᴀɴɴᴇᴅ ᴛᴏ ᴜsᴇ ᴍᴇ. Cᴏɴᴛᴀᴄᴛ ᴛʜᴇ Dᴇᴠᴇʟᴏᴘᴇʀ</i>",
                     parse_mode=ParseMode.HTML,
@@ -262,6 +257,54 @@ async def help_handler(bot, message):
             return
         except Exception:
             await bot.send_message(
+                photo="https://graph.org/file/8e67ae4a3803f69a28218.jpg",
+                chat_id=message.chat.id,
+                text="**Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ Wʀᴏɴɢ. Cᴏɴᴛᴀᴄᴛ ᴍʏ ʙᴏss**  [HATMATES](https://t.me/Hatmateinc)",
+                parse_mode=ParseMode.MARKDOWN,
+                disable_web_page_preview=True)
+            return
+    await message.reply_text(
+        text=ABOUT_TEXT,
+        parse_mode=ParseMode.HTML,
+        disable_web_page_preview=True,
+        reply_markup=ABOUT_BUTTONS
+    )
+
+@StreamBot.on_message(filters.command('help') & filters.private)
+async def help_handler(bot, message):
+    if not await db.is_user_exist(message.from_user.id):
+        await db.add_user(message.from_user.id)
+        await bot.send_message(
+            Var.BIN_CHANNEL,
+            f"**Nᴇᴡ Usᴇʀ Jᴏɪɴᴇᴅ **\n\n__Mʏ Nᴇᴡ Fʀɪᴇɴᴅ__ [{message.from_user.first_name}](tg://user?id={message.from_user.id}) __Started Your Bot !!__"
+        )
+    if Var.UPDATES_CHANNEL is not None:
+        try:
+            user = await bot.get_chat_member(Var.UPDATES_CHANNEL, message.chat.id)
+            if user.status == "kicked":
+                await bot.send_message(
+                    photo="https://graph.org/file/8e67ae4a3803f69a28218.jpg",
+                    chat_id=message.chat.id,
+                    text="<i>Sᴏʀʀʏ Sɪʀ, Yᴏᴜ ᴀʀᴇ Bᴀɴɴᴇᴅ ᴛᴏ ᴜsᴇ ᴍᴇ. Cᴏɴᴛᴀᴄᴛ ᴛʜᴇ Dᴇᴠᴇʟᴏᴘᴇʀ</i>",
+                    parse_mode=ParseMode.HTML,
+                    disable_web_page_preview=True
+                )
+                return
+        except UserNotParticipant:
+            await bot.send_message(
+                chat_id=message.chat.id,
+                text="**Pʟᴇᴀsᴇ Jᴏɪɴ Mʏ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ ᴛᴏ ᴜsᴇ ᴛʜɪs Bᴏᴛ!**\n\n__Dᴜᴇ ᴛᴏ Oᴠᴇʀʟᴏᴀᴅ, Oɴʟʏ Cʜᴀɴɴᴇʟ Sᴜʙsᴄʀɪʙᴇʀs ᴄᴀɴ ᴜsᴇ ᴛʜᴇ Bᴏᴛ!__",
+                reply_markup=InlineKeyboardMarkup(
+                    [[
+                        InlineKeyboardButton("🤖 Jᴏɪɴ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
+                        ]]
+                ),
+                parse_mode=ParseMode.MARKDOWN
+            )
+            return
+        except Exception:
+            await bot.send_message(
+                photo="https://graph.org/file/8e67ae4a3803f69a28218.jpg",
                 chat_id=message.chat.id,
                 text="**Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ Wʀᴏɴɢ. Cᴏɴᴛᴀᴄᴛ ᴍʏ ʙᴏss**  [HATMATES](https://t.me/Hatmateinc)",
                 parse_mode=ParseMode.MARKDOWN,
