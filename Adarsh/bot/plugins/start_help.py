@@ -17,14 +17,14 @@ from pyrogram.enums.parse_mode import ParseMode
 START_BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton('Hᴇʟᴘ', callback_data='help'),
-        InlineKeyboardButton('Aʙᴏᴜᴛ', callback_data='abt'),
+        InlineKeyboardButton('Aʙᴏᴜᴛ', callback_data='about'),
         InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close')
         ]]
     )
 HELP_BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton('Hᴏᴍᴇ', callback_data='home'),
-        InlineKeyboardButton('Aʙᴏᴜᴛ', callback_data='abt'),
+        InlineKeyboardButton('Aʙᴏᴜᴛ', callback_data='about'),
         InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close')
         ]]
     )
@@ -44,18 +44,19 @@ async def cb_data(bot, update):
             disable_web_page_preview=True,
             reply_markup=START_BUTTONS
         )
+    elif update.data == "about":
+        await update.message.edit_text(
+            text=ABOUT_TEXT,
+            disable_web_page_preview=True,
+            reply_markup=ABOUT_BUTTONS
+        )
     elif update.data == "help":
         await update.message.edit_text(
             text=HELP_TEXT,
             disable_web_page_preview=True,
             reply_markup=HELP_BUTTONS
         )
-    elif update.data == "abt":
-        await update.message.edit_text(
-            text=ABOUT_TEXT,
-            disable_web_page_preview=True,
-            reply_markup=ABOUT_BUTTONS
-        )
+    
     else:
         await update.message.delete()
 
@@ -222,7 +223,7 @@ async def start(b, m):
         )
 
 
-@StreamBot.on_message(filters.command('abt') & filters.private)
+@StreamBot.on_message(filters.command('about') & filters.private)
 async def about_handler(bot, message):
     if not await db.is_user_exist(message.from_user.id):
         await db.add_user(message.from_user.id)
@@ -231,9 +232,10 @@ async def about_handler(bot, message):
             f"#NEW_USER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) Started !!"
         )
     await message.reply_photo(
-            photo="https://graph.org/file/8e67ae4a3803f69a28218.jpg",
-            caption=ABOUT_TEXT,
-        reply_markup=ABOUT_BUTTONS
+        photo="https://graph.org/file/8e67ae4a3803f69a28218.jpg",
+        caption=ABOUT_TEXT,
+        reply_markup=ABOUT_BUTTONS,
+        parse_mode=ParseMode.HTML
     )
 
 @StreamBot.on_message(filters.command('help') & filters.private)
