@@ -22,7 +22,7 @@ pass_db = Database(Var.DATABASE_URL, "ag_passwords")
 
 async def get_shortlink(link):
 
-    url = f'{Afly.in}/api'
+    url = f'{SHORT_API}/api'
     params = {
       'api': a32df5ca79226ba25c9307e8ffb120971c7870c4,
       'url': link,
