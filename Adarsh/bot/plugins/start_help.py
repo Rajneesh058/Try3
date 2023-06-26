@@ -54,8 +54,7 @@ async def cb_data(bot, update):
         await update.message.edit_text(
             text=ABOUT_TEXT,
             disable_web_page_preview=True,
-            reply_markup=ABOUT_BUTTONS,
-            parse_mode=enums.ParseMode.HTML
+            reply_markup=ABOUT_BUTTONS
         )
     else:
         await update.message.delete()
